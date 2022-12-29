@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 export default function productduct(props) {
   const product = props.product;
@@ -8,9 +8,12 @@ export default function productduct(props) {
       <div className="card-body">
         <h5 className="card-title">{product.title}</h5>
         <p className="card-text">{product.description}</p>
-        <a href="/#" className="btn btn-primary">
-          Details
-        </a>
+        <p>Price {product.price}$</p>
+        {props.isDetails && (
+          <Link to={`/product/${product.id}`} className="btn btn-primary">
+            Details
+          </Link>
+        )}
       </div>
     </div>
   );
