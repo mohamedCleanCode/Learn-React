@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/Navbar";
+import ProductDetails from "./components/ProductDetails";
 import Sidebar from "./components/Sidebar";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
           </Routes>
         </div>
       </div>

@@ -16,7 +16,9 @@ export default function Products() {
         <td>{pro.title}</td>
         <td>{pro.price}$</td>
         <td>
-          <button className="btn btn-info">View</button>
+          <Link to={`/products/${pro.id}`} className="btn btn-info">
+            View
+          </Link>
           <button className="btn btn-primary">Edit</button>
           <button className="btn btn-danger">Delete</button>
         </td>
