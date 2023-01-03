@@ -5,10 +5,22 @@ export default function Products() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    getAllProducts();
+  }, []);
+
+  const getAllProducts = () => {
     fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => setProducts(data));
-  }, []);
+  };
+  const deleteProduct = (id) => {
+    fetch(`http://localhost:5000/products/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => getAllProducts());
+  };
+
   let tr = products.map((pro) => {
     return (
       <tr key={pro.id}>
@@ -20,7 +32,12 @@ export default function Products() {
             View
           </Link>
           <button className="btn btn-primary">Edit</button>
-          <button className="btn btn-danger">Delete</button>
+          <button
+            className="btn btn-danger"
+            onClick={() => deleteProduct(pro.id)}
+          >
+            Delete
+          </button>
         </td>
       </tr>
     );
@@ -31,7 +48,7 @@ export default function Products() {
       <Link to="/products/add" className="btn btn-success">
         Add New Product
       </Link>
-      <table class="table table-striped table-hover mt-5">
+      <table className="table table-striped table-hover mt-5">
         <thead>
           <tr>
             <td>ID</td>
