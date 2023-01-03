@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 export default function Products() {
   const [products, setProducts] = useState([]);
@@ -13,12 +17,19 @@ export default function Products() {
       .then((res) => res.json())
       .then((data) => setProducts(data));
   };
-  const deleteProduct = (id) => {
-    fetch(`http://localhost:5000/products/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => getAllProducts());
+  const deleteProduct = (pro) => {
+    MySwal.fire({
+      title: `Are you sure delete ${pro.title}`,
+      showCancelButton: true,
+    }).then((res) => {
+      if (res.isConfirmed) {
+        fetch(`http://localhost:5000/products/${pro.id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => getAllProducts());
+      }
+    });
   };
 
   let tr = products.map((pro) => {
@@ -31,11 +42,10 @@ export default function Products() {
           <Link to={`/products/${pro.id}`} className="btn btn-info">
             View
           </Link>
-          <button className="btn btn-primary">Edit</button>
-          <button
-            className="btn btn-danger"
-            onClick={() => deleteProduct(pro.id)}
-          >
+          <Link to={`/products/edit/${pro.id}`} className="btn btn-primary">
+            Edit
+          </Link>
+          <button className="btn btn-danger" onClick={() => deleteProduct(pro)}>
             Delete
           </button>
         </td>

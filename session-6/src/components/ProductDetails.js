@@ -16,7 +16,7 @@ export default function ProductDetails() {
       <h2>{product.title}</h2>
       <p>{product.description}</p>
       <p>Price:{product.price}$</p>
-      {product.images && <img src={product.images[0]} alt={product.title} />}
+      {product && <img src={product.image} alt={product.title} />}
     </div>
   );
 }

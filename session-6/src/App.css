@@ -9,3 +9,10 @@
 .sidebar ul li {
   padding: 10px 0 10px 10px;
 }
+.add-product input,
+.edit-product input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+}
