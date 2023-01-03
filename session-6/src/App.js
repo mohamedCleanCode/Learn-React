@@ -3,6 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import ProductDetails from "./components/ProductDetails";
 import Sidebar from "./components/Sidebar";
+import AddProduct from "./pages/AddProduct";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
 
@@ -19,6 +20,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Products />} />
             <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/products/add" element={<AddProduct />} />
           </Routes>
         </div>
       </div>
