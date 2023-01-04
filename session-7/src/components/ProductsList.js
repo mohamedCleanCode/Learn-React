@@ -1,8 +1,12 @@
-import { useContext } from "react";
-import { ProductsContext } from "../context/ProductsContext";
+// import { useContext } from "react";
+// import { ProductsContext } from "../context/ProductsContext";
+
+import { useRecoilState } from "recoil";
+import productsState from "../atoms/ProductsAtom";
 
 export default function ProductsList() {
-  const products = useContext(ProductsContext);
+  //   const products = useContext(ProductsContext);
+  const [products, setProductsState] = useRecoilState(productsState);
   return (
     <div>
       ProductsList
