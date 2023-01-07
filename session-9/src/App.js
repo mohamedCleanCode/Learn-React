@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import Products from "./components/Products";
-import { diposite, withDraw } from "./store/actions/bank-actions";
+import { diposite, withDraw } from "./rtk/slices/bank-slice";
 
 function App() {
   const state = useSelector((state) => state);

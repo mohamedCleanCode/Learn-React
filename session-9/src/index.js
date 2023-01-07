@@ -7,7 +7,8 @@ import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import App from "./App";
 import "./index.css";
-import { store } from "./store";
+// import { store } from "./store";
+import { store } from "./rtk/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
