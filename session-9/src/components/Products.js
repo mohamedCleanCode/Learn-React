@@ -1,11 +1,15 @@
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../store/actions/product-actions";
+import { addProduct, fetchProducts } from "../store/actions/product-actions";
 
 export default function Products() {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
-  console.log(products);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
   return (
     <div>
       <h1>Products</h1>

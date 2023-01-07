@@ -7,7 +7,6 @@ function App() {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
 
-  console.log(state);
   return (
     <div className="App">
       <p>Bank Account: {state.bank}</p>
