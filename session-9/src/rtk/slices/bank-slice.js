@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-export const bankSlice = createSlice({
+const bankSlice = createSlice({
   initialState: 1000,
   name: "bankSlice",
   reducers: {

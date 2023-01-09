@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addProduct } from "../rtk/slices/products-slics";
+import { addProduct, fetchProducts } from "../rtk/slices/products-slics";
 
 export default function Products() {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
 
   return (
     <div>
