@@ -7,4 +7,5 @@ export const store = configureStore({
     bank: bankReducer,
     products: productsReducer,
   },
+  devTools: true,
 });
