@@ -3,11 +3,13 @@ import { Col, Container, Row } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
+import { addTocart } from "../rtk/slices/cart-slice";
 import { fetchProducts } from "../rtk/slices/products-slice";
 
 function Products() {
   const products = useSelector((state) => state.products);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchProducts());
   }, []);
@@ -29,7 +31,12 @@ function Products() {
                   <Card.Title>{product.title}</Card.Title>
                   <Card.Text>{product.description}</Card.Text>
                   <Card.Text>{product.price}</Card.Text>
-                  <Button variant="primary">Add To Cart</Button>
+                  <Button
+                    variant="primary"
+                    onClick={() => dispatch(addTocart(product))}
+                  >
+                    Add To Cart
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
