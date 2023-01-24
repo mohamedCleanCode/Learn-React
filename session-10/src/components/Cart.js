@@ -6,7 +6,10 @@ import { deleteFromCart } from "../rtk/slices/cart-slice";
 function Cart() {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-  const totalPrice = cart.reduce((acc, curr) => (acc += curr.price), 0);
+  const totalPrice = cart.reduce(
+    (acc, curr) => (acc += curr.price * curr.quantity),
+    0
+  );
   return (
     <div className="cart">
       <Container>
@@ -14,7 +17,7 @@ function Cart() {
         <Button variant="primary" className="mb-3">
           Clear Cart
         </Button>
-        <h5>Totla Price is: {totalPrice.toFixed(2)}</h5>
+        <h5>Totla Price is: {totalPrice.toFixed(2)}$</h5>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -22,6 +25,7 @@ function Cart() {
               <th>Title</th>
               <th>Img</th>
               <th>Price</th>
+              <th>Quantity</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -38,6 +42,7 @@ function Cart() {
                   </td>
                   <td>{product.title}</td>
                   <td>{product.price}</td>
+                  <td>{product.quantity}</td>
                   <td>
                     <Button
                       variant="danger"
