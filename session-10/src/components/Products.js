@@ -30,7 +30,7 @@ function Products() {
                 <Card.Body>
                   <Card.Title>{product.title}</Card.Title>
                   <Card.Text>{product.description}</Card.Text>
-                  <Card.Text>{product.price}</Card.Text>
+                  <Card.Text>{product.price}$</Card.Text>
                   <Button
                     variant="primary"
                     onClick={() => dispatch(addTocart(product))}

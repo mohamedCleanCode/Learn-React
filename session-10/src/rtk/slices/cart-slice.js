@@ -7,7 +7,9 @@ const cartSlice = createSlice({
     addTocart: (state, action) => {
       state.push(action.payload);
     },
-    deleteFromCart: (state, action) => {},
+    deleteFromCart: (state, action) => {
+      return state.filter((product) => product.id !== action.payload.id);
+    },
     clearCart: (state, action) => {},
   },
 });
